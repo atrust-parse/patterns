@@ -12,7 +12,7 @@ MODSECRULEMSG \[msg %{QUOTEDSTRING:rulemessage}\]
 MODSECRULEDATA \[data %{QUOTEDSTRING:ruledata}\]
 MODSECRULESEVERITY \[severity %{QUOTEDSTRING:ruleseverity}\]
 MODSECRULESVER \[ver %{QUOTEDSTRING:version}\]
-MODSECRULETAGS (?:\[tag %{QUOTEDSTRING:ruletag0}\] )?(?:\[tag %{QUOTEDSTRING:ruletag1}\] )?(?:\[tag %{QUOTEDSTRING:ruletag2}\] )?(?:\[tag %{QUOTEDSTRING:ruletag3}\] )?(?:\[tag %{QUOTEDSTRING:ruletag4}\] )?(?:\[tag %{QUOTEDSTRING:ruletag5}\] )?(?:\[tag %{QUOTEDSTRING:ruletag6}\] )?(?:\[tag %{QUOTEDSTRING:ruletag7}\] )?(?:\[tag %{QUOTEDSTRING:ruletag8}\] )?(?:\[tag %{QUOTEDSTRING:ruletag9}\] )?(?:\[tag %{QUOTEDSTRING}\] )*
+MODSECRULETAGS (\[tag "%{DATA:ruletags}"\]\s*)+
 MODSECHOSTNAME \[hostname %{QUOTEDSTRING:targethost}\]
 MODSECURI \[uri %{QUOTEDSTRING:targeturi}\]
 MODSECUID \[unique_id %{QUOTEDSTRING:uniqueid}\]
