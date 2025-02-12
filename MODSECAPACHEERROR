@@ -1,5 +1,5 @@
 APACHEERRORTIME %{TIMESTAMP_ISO8601}
-APACHEERRORPREFIX \[%{APACHEERRORTIME:timestamp}\] \[%{NOTSPACE:apacheseverity}\] \[client %{IPORHOST:sourcehost}\]
+APACHEERRORPREFIX \[%{TIMESTAMP_ISO8601:timestamp}\] \[%{NOTSPACE:apacheseverity}\] %{IPORHOST:sourcehost}(:%{NUMBER:port})?.*\[client %{IPORHOST:sourcehost}\]
 GENERICAPACHEERROR %{APACHEERRORPREFIX} %{GREEDYDATA:message}
 
 MODSECPREFIX %{APACHEERRORPREFIX} ModSecurity: %{NOTSPACE:modsecseverity}\. %{GREEDYDATA:modsecmessage}
