@@ -1,0 +1,9 @@
+LOG_HEADER \[%{DATA:log_source}\]\s*
+LOG_ID (%{NUMBER:log_id}|-)
+IP_PORT_PAIR \{\s*(%{IPORHOST:src_ip}:%{NUMBER:src_port}|-)\s+(%{IPORHOST:dst_ip}:%{NUMBER:dst_port}|-)\s*\}
+FROM_IP \(from\s*%{IPORHOST:from_ip}:%{NUMBER:from_port}\)
+CLIENT_PEER \(clnt:\s*%{IPORHOST:client_ip}:%{NUMBER:client_port}\s*peer:\s*%{IPORHOST:peer_ip}:%{NUMBER:peer_port}\s*serv:\s*%{IPORHOST:srv_ip}:%{NUMBER:srv_port}\)
+NAT_CHECK nat_check:\s*SYN packet for already natted connection %{IP:nat_orig_src_ip}:%{NUMBER:nat_orig_src_port} -> %{IP:nat_orig_dst_ip}:%{NUMBER:nat_orig_dst_port} ==> %{IP:nat_final_dst_ip}:%{NUMBER:nat_final_dst_port}
+LOG_MESSAGE %{GREEDYDATA:msg}
+
+COMBINED_LOG %{LOG_HEADER}(?:%{LOG_ID}\s*)?(?:%{IP_PORT_PAIR}\s*)?(?:%{FROM_IP}\s*%{LOG_MESSAGE}|%{CLIENT_PEER}\s*%{LOG_MESSAGE}|%{NAT_CHECK}|%{LOG_MESSAGE})
